@@ -5,7 +5,7 @@ class ContadorStore = _ContadorStore with _$ContadorStore;
 
 abstract class _ContadorStore with Store {
   @observable
-  int contador = 0;
+  int contador = 19;
 
   @action
   void incrementar() {
