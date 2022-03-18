@@ -21,40 +21,43 @@ class EntradaTempo extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: Icon(
-                Icons.arrow_downward,
-                color: Colors.white,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {},
+                child: Icon(
+                  Icons.arrow_downward,
+                  color: Colors.white,
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(5),
+                  primary: Colors.red,
+                ),
               ),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(15),
-                primary: Colors.red,
+              Text(
+                '${this.valor} min',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
-            ),
-            Text(
-              '${this.valor} min',
-              style: TextStyle(
-                fontSize: 18,
+              ElevatedButton(
+                onPressed: () {},
+                child: Icon(
+                  Icons.arrow_upward,
+                  color: Colors.white,
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: CircleBorder(),
+                  padding: EdgeInsets.all(5),
+                  primary: Colors.red,
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Icon(
-                Icons.arrow_upward,
-                color: Colors.white,
-              ),
-              style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(15),
-                primary: Colors.red,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
