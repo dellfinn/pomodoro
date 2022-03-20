@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pomodoro/components/Cronometro.dart';
 import 'package:pomodoro/components/EntradaTempo.dart';
 import 'package:provider/provider.dart';
-
 import '../store/pomodoro.store.dart';
 
 class Pomodoro extends StatelessWidget {
@@ -12,6 +11,7 @@ class Pomodoro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final store = Provider.of<PomodoroStore>(context);
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -26,21 +26,29 @@ class Pomodoro extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   EntradaTempo(
-                    valor: store.tempoTrabalho,
                     titulo: 'Trabalho',
-                    inc: store.incrementarTempoTrabalho,
-                    dec: store.decrementrarTempoTrabalho,
+                    valor: store.tempoTrabalho,
+                    inc: store.iniciado && store.estaTrabalhando()
+                        ? null
+                        : store.incrementarTempoTrabalho,
+                    dec: store.iniciado && store.estaTrabalhando()
+                        ? null
+                        : store.decrementarTempoTrabalho,
                   ),
                   EntradaTempo(
-                    valor: store.tempoDescanso,
                     titulo: 'Descanso',
-                    inc: store.incrementarTempoDesncaso,
-                    dec: store.decrementrarTempoDescanso,
+                    valor: store.tempoDescanso,
+                    inc: store.iniciado && store.estaDescansando()
+                        ? null
+                        : store.incrementarTempoDescanso,
+                    dec: store.iniciado && store.estaDescansando()
+                        ? null
+                        : store.decrementarTempoDescanso,
                   ),
                 ],
               ),
             ),
-          ),
+          )
         ],
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../store/pomodoro.store.dart';
 
 class EntradaTempo extends StatelessWidget {
   final String titulo;
@@ -8,14 +10,16 @@ class EntradaTempo extends StatelessWidget {
 
   const EntradaTempo({
     Key? key,
-    required this.valor,
     required this.titulo,
+    required this.valor,
     this.inc,
     this.dec,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<PomodoroStore>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -25,44 +29,41 @@ class EntradaTempo extends StatelessWidget {
             fontSize: 25,
           ),
         ),
-        const SizedBox(height: 10),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed:this.dec,
-                child: Icon(
-                  Icons.arrow_downward,
-                  color: Colors.white,
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(5),
-                  primary: Colors.red,
-                ),
+        SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: this.dec,
+              child: Icon(
+                Icons.arrow_downward,
+                color: Colors.white,
               ),
-              Text(
-                '${this.valor} min',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(15),
+                primary: store.estaTrabalhando() ? Colors.red : Colors.green,
               ),
-              ElevatedButton(
-                onPressed: this.inc,
-                child: Icon(
-                  Icons.arrow_upward,
-                  color: Colors.white,
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(5),
-                  primary: Colors.red,
-                ),
+            ),
+            Text(
+              '${this.valor} min',
+              style: TextStyle(
+                fontSize: 18,
               ),
-            ],
-          ),
+            ),
+            ElevatedButton(
+              onPressed: this.inc,
+              child: Icon(
+                Icons.arrow_upward,
+                color: Colors.white,
+              ),
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(15),
+                primary: store.estaTrabalhando() ? Colors.red : Colors.green,
+              ),
+            ),
+          ],
         ),
       ],
     );
