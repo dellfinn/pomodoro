@@ -25,42 +25,42 @@ class EntradaTempo extends StatelessWidget {
       children: [
         Text(
           this.titulo,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 25,
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: this.dec,
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_downward,
                 color: Colors.white,
               ),
               style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(15),
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(15),
                 primary: store.estaTrabalhando() ? Color(0xFFce1c1c) : Color(0xFF202124),
               ),
             ),
             Text(
-              '${this.valor} min',
-              style: TextStyle(
+              '$valor min',
+              style: const TextStyle(
                 fontSize: 18,
               ),
             ),
             ElevatedButton(
-              onPressed: this.inc,
-              child: Icon(
+              onPressed: inc,
+              child: const Icon(
                 Icons.arrow_upward,
                 color: Colors.white,
               ),
               style: ElevatedButton.styleFrom(
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(15),
-                primary: store.estaTrabalhando() ? Color(0xFFce1c1c) : Color(0xFF202124),
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(15),
+                primary: store.estaTrabalhando() ? const Color(0xFFce1c1c) : Color(0xFF202124),
               ),
             ),
           ],

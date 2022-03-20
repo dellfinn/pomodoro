@@ -26,7 +26,7 @@ class Cronometro extends StatelessWidget {
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: store.estaTrabalhando()
-                          ? Color(0xFF202124)
+                          ? const Color(0xFF202124)
                           : Colors.white),
                 ),
               ),

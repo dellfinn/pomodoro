@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
           create: (_) => PomodoroStore(),
         )
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         title: 'Contador',
-        home: const Pomodoro(),
+        home: Pomodoro(),
       ),
     );
   }

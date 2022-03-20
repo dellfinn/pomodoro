@@ -14,13 +14,13 @@ class CronometroBotao extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        primary: Color(0xfffffd532),
-        shape: CircleBorder(),
-        padding: EdgeInsets.symmetric(
+        primary: const Color(0xfffffd532),
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.symmetric(
           horizontal: 30,
           vertical: 20,
         ),
-        textStyle: TextStyle(
+        textStyle: const TextStyle(
           fontSize: 25,
         ),
       ),
@@ -30,7 +30,7 @@ class CronometroBotao extends StatelessWidget {
           Icon(
             icone,
             size: 45,
-            color: Color(0xFFce1c1c),
+            color: const Color(0xFFce1c1c),
           ),
         ],
       ),
