@@ -14,26 +14,51 @@ class Cronometro extends StatelessWidget {
     return Observer(
       builder: (_) {
         return Container(
-          color: store.estaTrabalhando() ? Colors.red : Colors.green,
+          color: store.estaTrabalhando() ? Colors.white : Color(0xFF202124),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                store.estaTrabalhando()
-                    ? 'Hora de Trabalhar'
-                    : 'Hora de Descansar',
-                style: TextStyle(
-                  fontSize: 40,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: Text(
+                  store.estaTrabalhando() ? 'Trabalhar' : 'Descansar',
+                  style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: store.estaTrabalhando()
+                          ? Color(0xFF202124)
+                          : Colors.white),
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
-                '${store.minutos.toString().padLeft(2, '0')}:${store.segundos.toString().padLeft(2, '0')}',
-                style: TextStyle(
-                  fontSize: 120,
-                  color: Colors.white,
-                ),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/PomodoroOficial.png',
+                    width: 420,
+                    height: 420,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFFce1c1c),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 15, bottom: 25, right: 20, left: 20),
+                        child: Text(
+                          '${store.minutos.toString().padLeft(2, '0')}:${store.segundos.toString().padLeft(2, '0')}',
+                          style: TextStyle(
+                            fontSize: 100,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 20),
               Row(
@@ -43,7 +68,6 @@ class Cronometro extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: CronometroBotao(
-                        texto: 'Iniciar',
                         icone: Icons.play_arrow,
                         click: store.iniciar,
                       ),
@@ -52,7 +76,6 @@ class Cronometro extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: CronometroBotao(
-                        texto: 'Parar',
                         icone: Icons.stop,
                         click: store.parar,
                       ),
@@ -60,7 +83,6 @@ class Cronometro extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: CronometroBotao(
-                      texto: 'Reiniciar',
                       icone: Icons.refresh,
                       click: store.reiniciar,
                     ),

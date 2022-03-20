@@ -42,7 +42,7 @@ class EntradaTempo extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: CircleBorder(),
                 padding: EdgeInsets.all(15),
-                primary: store.estaTrabalhando() ? Colors.red : Colors.green,
+                primary: store.estaTrabalhando() ? Color(0xFFce1c1c) : Color(0xFF202124),
               ),
             ),
             Text(
@@ -60,7 +60,7 @@ class EntradaTempo extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: CircleBorder(),
                 padding: EdgeInsets.all(15),
-                primary: store.estaTrabalhando() ? Colors.red : Colors.green,
+                primary: store.estaTrabalhando() ? Color(0xFFce1c1c) : Color(0xFF202124),
               ),
             ),
           ],
